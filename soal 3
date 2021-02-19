@@ -1,0 +1,30 @@
+#include <iostream>   
+
+using namespace std; 
+
+int main()  
+{  
+    int colMapLeft = 3, colMapRight = 2;
+    int rowTotal = 3;
+    
+    int colLeft[colMapLeft][rowTotal];
+    int colRight[colMapRight][rowTotal];
+
+    int arrayLeft = 0, arrayRight = 0;
+
+    int number = 1;
+
+    for(int i = 1; i<=rowTotal; i++){
+        for(arrayLeft; arrayLeft < colMapLeft; arrayLeft++){
+            colLeft[arrayLeft][i-1] = number;
+            number++;
+        }
+        for(arrayRight; arrayRight < colMapRight; arrayRight++){
+            colRight[arrayRight][i-1] = number;
+            number++;
+        }
+        arrayLeft = 0; arrayRight = 0;
+    }
+    
+    return 0;
+}  
