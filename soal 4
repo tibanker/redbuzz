@@ -1,0 +1,45 @@
+#include <iostream>   
+
+using namespace std; 
+
+int main()  
+{  
+    int TotalJarak = 500, MaxTank = 180;
+    int JarakSpbu[8] = {100, 140, 150, 200, 330, 360, 400};
+    int Harga[8] = {1000, 2000, 5000, 1000, 6000, 4000, 1000};
+    int price = 0;
+    int lastSPBU;
+    int currJarak = 0;
+    int prevHarga = 0;
+    int jarakTempuh = 0;
+    int i = 0;
+    int currBensin = 0;
+
+    while(jarakTempuh < TotalJarak){
+        while(i<8){
+            if (JarakSpbu[i] - currJarak < MaxTank){
+                if (prevHarga  == 0)
+                    prevHarga = Harga[i];
+
+                if (Harga[i] <= prevHarga){
+                    prevHarga = Harga[i];
+                    jarakTempuh = JarakSpbu[i];
+                    currBensin = JarakSpbu[i] - currJarak;
+                    lastSPBU = i;
+                }
+            } else {
+                price += (prevHarga * currBensin);
+                prevHarga = 0;
+                break;
+            }
+            i++;
+            if (i==8)
+                jarakTempuh = TotalJarak;
+        }
+        i = lastSPBU + 1;
+        currJarak = jarakTempuh;
+    }
+    price *= 100;
+    cout<<price;
+    return 0;
+}  
