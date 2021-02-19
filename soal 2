@@ -1,0 +1,27 @@
+#include <iostream>   
+#include <string> 
+
+using namespace std; 
+
+int main()  
+{  
+    int x[6] = {1,5,6,1,0,1};
+    int y = 6;
+    string beginning = "[";
+    string z;
+
+    for(int i = 0; i<6; i++){
+        for(int j = 0; j<6; j++){
+            if (j != i){
+                if (x[i] + x[j] == 6){
+                    z = z + "[" + to_string(x[i]) + "," + to_string(x[j]) + "]";
+                    break;
+                }
+            }
+        }
+        if (i != 5)
+           z = z + ",";
+    }
+    cout<<z;
+    return 0;
+}  
